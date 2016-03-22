@@ -560,6 +560,7 @@ public final class RpcManager {
     public void execute(final TSDB tsdb, final HttpQuery query) 
       throws IOException {
       final StringBuilder buf = new StringBuilder(2048);
+      final String urlroot = Strings.nullToEmpty(tsdb.getConfig().getString("tsd.http.urlroot"));
       buf.append("<div id=queryuimain></div>"
                  + "<noscript>You must have JavaScript enabled.</noscript>"
                  + "<iframe src=javascript:'' id=__gwt_historyFrame tabIndex=-1"
@@ -567,7 +568,7 @@ public final class RpcManager {
                  + "</iframe>");
       query.sendReply(HttpQuery.makePage(
         "<script type=text/javascript language=javascript"
-        + " src=s/queryui.nocache.js></script>",
+        + " src=" + urlroot + "s/queryui.nocache.js></script>",
         "OpenTSDB", "", buf.toString()));
     }
   }

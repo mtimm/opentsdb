@@ -132,6 +132,8 @@ final class CliOptions {
             entry.getValue());
       } else if (entry.getKey().toLowerCase().equals("--port")) {
         config.overrideConfig("tsd.network.port", entry.getValue());
+      } else if (entry.getKey().toLowerCase().equals("--urlroot")) {
+        config.overrideConfig("tsd.http.urlroot", entry.getValue());
       } else if (entry.getKey().toLowerCase().equals("--staticroot")) {
         config.overrideConfig("tsd.http.staticroot", entry.getValue());
       } else if (entry.getKey().toLowerCase().equals("--cachedir")) {
