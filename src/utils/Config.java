@@ -429,6 +429,7 @@ public class Config {
     // map.put("tsd.network.port", ""); // does not have a default, required
     // map.put("tsd.http.cachedir", ""); // does not have a default, required
     // map.put("tsd.http.staticroot", ""); // does not have a default, required
+    // map.put("tsd.http.urlroot", ""); // does not have a default, required
     default_map.put("tsd.mode", "rw");
     default_map.put("tsd.no_diediedie", "false");
     default_map.put("tsd.network.bind", "0.0.0.0");

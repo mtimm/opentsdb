@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.google.common.net.HttpHeaders;
+import com.google.common.base.Strings;
 import com.stumbleupon.async.Callback;
 import com.stumbleupon.async.Deferred;
 
@@ -374,6 +375,7 @@ final class RpcHandler extends IdleStateAwareChannelUpstreamHandler {
     public void execute(final TSDB tsdb, final HttpQuery query) 
       throws IOException {
       final StringBuilder buf = new StringBuilder(2048);
+      final String urlroot = Strings.nullToEmpty(tsdb.getConfig().getString("tsd.http.urlroot"));
       buf.append("<div id=queryuimain></div>"
                  + "<noscript>You must have JavaScript enabled.</noscript>"
                  + "<iframe src=javascript:'' id=__gwt_historyFrame tabIndex=-1"
@@ -381,7 +383,7 @@ final class RpcHandler extends IdleStateAwareChannelUpstreamHandler {
                  + "</iframe>");
       query.sendReply(HttpQuery.makePage(
         "<script type=text/javascript language=javascript"
-        + " src=/s/queryui.nocache.js></script>",
+        + " src=" + urlroot + "s/queryui.nocache.js></script>",
         "TSD", "Time Series Database", buf.toString()));
     }
   }

@@ -92,10 +92,10 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class QueryUi implements EntryPoint, HistoryListener {
   // Some URLs we use to fetch data from the TSD.
-  private static final String AGGREGATORS_URL = "/aggregators";
-  private static final String LOGS_URL = "/logs?json";
-  private static final String STATS_URL = "/stats?json";
-  private static final String VERSION_URL = "/version?json";
+  private static final String AGGREGATORS_URL = "/tunnels/digger/aggregators";
+  private static final String LOGS_URL = "/tunnels/digger/logs?json";
+  private static final String STATS_URL = "/tunnels/digger/stats?json";
+  private static final String VERSION_URL = "/tunnels/digger/version?json";
 
   private static final DateTimeFormat FULLDATE =
     DateTimeFormat.getFormat("yyyy/MM/dd-HH:mm:ss");
@@ -829,7 +829,7 @@ public class QueryUi implements EntryPoint, HistoryListener {
       }
     }
     final StringBuilder url = new StringBuilder();
-    url.append("/q?start=");
+    url.append("/tunnels/digger/q?start=");
     final String start_text = start_datebox.getTextBox().getText();
     if (start_text.endsWith(" ago") || start_text.endsWith("-ago")) {
       url.append(start_text);
