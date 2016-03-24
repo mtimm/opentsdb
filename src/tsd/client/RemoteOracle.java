@@ -14,6 +14,7 @@ package tsd.client;
 
 import java.util.HashMap;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
@@ -40,7 +41,8 @@ import com.google.gwt.user.client.ui.TextBoxBase;
  */
 final class RemoteOracle extends SuggestOracle {
 
-  private static final String SUGGEST_URL = "/tunnels/digger/suggest?type=";  // + type&q=foo
+  private static final String BASE_URL = GWT.getModuleBaseURL().replaceAll("s/$", "");
+  private static final String SUGGEST_URL = BASE_URL + "suggest?type=";  // + type&q=foo
 
   /**
    * Maps an oracle type to its suggestion cache.
