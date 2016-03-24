@@ -906,7 +906,7 @@ public class QueryUi implements EntryPoint, HistoryListener {
         } else {
           clearError();
 
-          String history = unencodedUri.substring(3)      // Remove "/q?".
+          String history = unencodedUri.replaceAll("^.*/q\\?", "")      // Remove "/q?".
             .replaceFirst("ignore=[^&]*&", "");  // Unnecessary cruft.
           if (autoreload.getValue()) {
             history += "&autoreload=" + autoreoload_interval.getText();
