@@ -453,7 +453,7 @@ final class RpcHandler extends IdleStateAwareChannelUpstreamHandler {
       if (query.apiVersion() > 0) {
         query.sendReply(query.serializer().formatVersionV1(version));
       } else {
-        final boolean json = query.request().getUri().endsWith("json");      
+        final boolean json = query.hasQueryStringParam("json");
         if (json) {
           query.sendReply(JSON.serializeToBytes(version));
         } else {
